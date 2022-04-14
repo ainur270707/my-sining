@@ -1,0 +1,90 @@
+import telebot
+
+bot = telebot.TeleBot('5376139232:AAHQGeAqpgKTPTIeeXyehgrcIxns0VwRHCg')
+
+
+@bot.message_handler(commands='start')
+def start(message):
+    bot.send_message(message.from_user.id,
+                     f"Привет {message.from_user.last_name} я помощник по игре My sining Monsters \n "
+                     f"В данном боте есть практически все о всех монстрах\n набери все волиш одну из этих команд\n"
+                     f"/look (Цифру монстра) \nНапример /look1(Без пробела!)\nЧтобы узнать цифру монстра напиши /monster")
+
+
+@bot.message_handler(commands='monster')
+def monster(message):
+    bot.send_message(message.from_user.id,
+                     "1.Палезатор\n2.Избалолист\n3.Зерномех\n4.Мамунт\n5.Лягашка\n6.Маракастук\n7.Барабамень"
+                     "\n8.Брюшок\n9.Ти-рокс\n10.Раковица\n11.\n12.\n13.\n14.\n15.\n")
+
+
+@bot.message_handler(commands='look1')
+def palezator(message):
+    bot.send_photo(message.from_user.id, 'https://i.ya-webdesign.com/images/toe-drawing-my-singing-monster.png')
+    bot.send_message(message.from_user.id, "Палезатор - желеобразный полусферический голубой Монстр с плавающим на поверхности лицом из двух салатовых глаз и широкого розового рта. Внутри полупрозрачного тела плавают пузырьки. По нижней его окраине по кругу распределены 7 видимых пальцев с ноготками.\n\nЗвук Палезатора:")
+    bot.send_audio(message.from_user.id, "https://mp3.getvideo.org/download/hB7XI3OtvmQ.mp3")
+
+@bot.message_handler(commands='look2')
+def izmalist(message):
+    bot.send_photo(message.from_user.id, 'https://www.pngitem.com/pimgs/m/555-5550361_my-singing-monsters-wiki-my-singing-monsters-giant.png')
+    bot.send_message(message.from_user.id, "Избалолист - огромный круглый гуманоидный монстр лимонно-зеленого цвета."
+                                           " Характерные черты включают огромный рот, большие нижние зубы, изогнутые кор"
+                                           "ичневые рога, оранжевые губы, зеленую лиственную гриву, глаза - бусинки и че"
+                                           "тырехпалые руки и ноги с желтыми ногтями.Этот монстр, возможно, имеет самое "
+                                           "сильное родство с растительным элементом из всех монстров оригинальной игры."
+                                           " Его лохматая грива из листьев спускается по рукам и создает впечатление бор"
+                                           "оды под подбородком."
+                                           " У Избалолиста два набора рогов: два крошечных рудиментарных отростка над гл"
+                                           "азами и два массивных изогнутых рога, выступающих с обеих сторон головы."
+                                           " Эти более крупные рога имеют вид и текстуру древесной коры и прорастают лис"
+                                           "тьями.Он раскачивается взад и вперед в такт песне острова, размахивая тяжелы"
+                                           "ми руками. Во время пения он иногда закрывает глаза и сжимает кулаки, чтобы "
+                                           "издать особенно мощную ноту.\nЗвук Избалолиста:")
+    bot.send_audio(message.from_user.id, 'https://mp3.getvideo.org/download/kOnYm7dCJAg.mp3')
+
+@bot.message_handler(commands='look3')
+def zernomex(message):
+    bot.send_photo(message.from_user.id, 'https://avatars.mds.yandex.net/i?id=93680cf63f249c8c399654458c1cc853-5257022-images-thumbs&n=13&exp=1')
+    bot.send_message(message.from_user.id,"Тело зерномеха является гладким прямоугольником. Конечностей у него две, которые являются ногами. Ноги у него выступают в виде палок, но ступни у него зелёные, с тремя пальцами. У него 10 острых зубов (как минимум, столько мы видим). Зрачки у них синие, а из головы торчит росток с одним листиком.Звуки Зерномеха:")
+
+@bot.message_handler(commands='look4')
+def mamynt(message):
+    bot.send_photo(message.from_user.id, 'https://avatars.mds.yandex.net/i?id=11cd523e2e10459b563e4f1af5491340-5916170-images-thumbs&n=13&exp=1')
+    bot.send_message(message.from_user.id, "Мамунт - покрытая белым мехом гуманоидная фигура без шеи, с двумя парами конечностей по три оголённых пальца на каждой. Лицо состоит из двух янтарных глаз и крупного зубастого рта. Ступни Монстра занимают большую площадь относительно тела.")
+
+@bot.message_handler(commands='look5')
+def lagashka(message):
+    bot.send_photo(message.from_user.id, 'https://static.wixstatic.com/media/6e8fda_7e1b1f6101bb4029a20c3e6ffadd7986~mv2.png')
+    bot.send_message(message.from_user.id, "Лягашка - водный монстр. Она имеет ярко-бирюзовое и очень пятнистое тело (Пятна синеватые и более ярко выражены ближе к окончаниям ног), три блестящих глаза с серыми зрачками, сами глаза имеют желтоватый оттенок, они располагаются на голове, большой рот с розовыми губами и пурпурные самоцветы на верхней части головы. Также имеет одну пару больших лап, которые темнеют ближе к своим концам. Зуб у Лягашки нет. Кисти ног имеют ластообразный вид.")
+
+
+@bot.message_handler(commands='look6')
+def marakactyk(message):
+    bot.send_photo(message.from_user.id, 'https://avatars.mds.yandex.net/i?id=a40a524696b9199cb2c5e96b7c0389eb-5031045-images-thumbs&n=13&exp=1')
+    bot.send_message(message.from_user.id, "Маракастук напоминает акулу, только с руками и ногами. Имеет два языка, которым стучит по сжатому во рту барабану.")
+
+@bot.message_handler(commands='look7')
+def barabamen(message):
+    bot.send_photo(message.from_user.id, 'https://www.pngfind.com/pngs/m/646-6466016_my-singing-monsters-png-my-singing-monsters-dawn.png')
+    bot.send_message(message.from_user.id, "Барабамень имеет каменное цилиндрическое тело на котором располагаются большие зелёные глаза и открытая нижняя челюсть с 3-мя затуплёнными зубами, а также четыре трёхпалые конечности, напоминающие человеческие загорелые руки и ноги. Макушка абсолютно плоская.")
+
+
+@bot.message_handler(commands='look8')
+def broshok(message):
+    bot.send_photo(message.from_user.id, 'https://avatars.mds.yandex.net/i?id=e062bae057aef8c3b72058d145443164-4824430-images-thumbs&n=13&exp=1')
+    bot.send_message(message.from_user.id, "Брюшок - живое зелёное растение, растущее в потрескавшемся керамическом горшке. Основание стебля выглядит толстое брюхо, откуда Монстр и получил своё название. Тело отчасти покрывают тёмные пятна, на нём всего четыре узелка, из двух которых вырастают головы - зубастые рты, одна большая и обращена вперёд, другая поменьше, находится ниже позади. Между головами растёт три листа.")
+
+@bot.message_handler(commands='look9')
+def tiroks(message):
+        bot.send_photo(message.from_user.id, 'https://p1.hiclipart.com/preview/570/631/651/animal-my-singing-monsters-cartoon-toy-figurine-action-figure-animal-figure-animation-png-clipart.jpg')
+        bot.send_message(message.from_user.id, "Ти-Рокс (T-Rox) - каменный монстр приятной серой окраски. Очевидно, свою каменную кожу он унаследовал от Барабамня. Ти-Рокс очень похож на динозвара (Тирекса). Помимо пронзительных голубых глаз тело монстра украшено хрустальными отростками, которые мигают, когда Ти-рокс клацает челюстями. Ноги и челюсть Ти-рокса ярко-желтого цвета, формой напоминают экскаватор. Ти-Рокс что-то вроде мехозавра. Его внешний вид - это гибрид динозавра и машины.")
+
+@bot.message_handler(commands='look10')
+
+def rakoviza(message):
+        bot.send_photo(message.from_user.id, 'https://banner2.cleanpng.com/20180405/ohw/kisspng-guide-for-my-singing-monsters-youtube-big-blue-bub-cookie-monster-5ac6bfbd0e28b8.271689931522974653058.jpg')
+        bot.send_message(message.from_user.id, "Раковица это существо с ногами из дерева и руками похожими на виноградные ветки. На голове у раковицы закреплены две тарелки, а в руке она держит ещё одну тарелку. Она носит фиолетовую рубашку с голубыми пятнами.")
+
+
+
+bot.polling(none_stop=True)
