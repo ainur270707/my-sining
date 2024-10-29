@@ -18,4 +18,4 @@ con.close()                     # закрываем подключение
 
 print("Server ends")
 server.close()
-~
+
