@@ -6,10 +6,10 @@ import json
 HOST = '127.0.0.1'  # Локальный хост
 PORT = 12345        # Порт сервера
 print(1)
-print(socket.gethostname())
+print(socket.gethostbyname_ex())
 print(2)# Создаем серверный сокет
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind((socket.gethostname(), PORT))
+server_socket.bind((socket.gethostbyname_ex()[-1][-1], PORT))
 server_socket.listen()
 
 clients = []
