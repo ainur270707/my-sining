@@ -5,7 +5,7 @@ import json
 # Настройка сервера
 HOST = '127.0.0.1'  # Локальный хост
 PORT = 12345        # Порт сервера
-
+print(socket.gethostname())
 # Создаем серверный сокет
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server_socket.bind((HOST, PORT))
