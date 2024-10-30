@@ -9,7 +9,7 @@ print(1)
 print(socket.gethostbyname_ex(socket.gethostname()))
 print(2)# Создаем серверный сокет
 server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_socket.bind((socket.gethostbyname_ex(socket.gethostname)[-1][-1], PORT))
+server_socket.bind((socket.gethostbyname_ex(socket.gethostname())[-1][-1], PORT))
 server_socket.listen()
 
 clients = []
