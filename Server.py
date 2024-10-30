@@ -1,21 +1,49 @@
-import socket                                               
-server = socket.socket()            # создаем объект сокета
-hostname = socket.gethostname()   
-print(hostname)# получаем имя хоста локальной машины
-port = 12345
-server.bind((hostname, port))
-server.listen(5)                    # начинаем прослушиваени
+import socket
+import threading
+import json
 
+# Настройка сервера
+HOST = '127.0.0.1'  # Локальный хост
+PORT = 12345        # Порт сервера
 
-print("Server starts")
+# Создаем серверный сокет
+server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_socket.bind((HOST, PORT))
+server_socket.listen()
 
-con, addr = server.accept()     # принимаем клиента
-print("connection: ", con)
-print("client address: ", addr)                             
-message = "Hello Client!"       # сообщение для отправки клиенту
-con.send(message.encode())      # отправляем сообщение клиенту
-con.close()                     # закрываем подключение
+clients = []
 
-print("Server ends")
-server.close()
+# Функция для рассылки сообщений всем клиентам
+def broadcast(message, sender_socket):
+    for client in clients:
+        if client != sender_socket:
+            client.send(message)
 
+# Функция для обработки клиентов
+def handle_client(client_socket):
+    while True:
+        try:
+            message = client_socket.recv(1024)
+            if message:
+                print(f"Получено сообщение: {message}")
+                broadcast(message, client_socket)
+            else:
+                remove_client(client_socket)
+                break
+        except:
+            remove_client(client_socket)
+            break
+
+# Функция удаления клиента из списка
+def remove_client(client_socket):
+    if client_socket in clients:
+        clients.remove(client_socket)
+        client_socket.close()
+
+print("Сервер запущен...")
+
+while True:
+    client_socket, addr = server_socket.accept()
+    clients.append(client_socket)
+    print(f"Новое подключение: {addr}")
+    threading.Thread(target=handle_client, args=(client_socket,)).start()
